@@ -1,0 +1,29 @@
+<div class="row">
+
+  <div class="col alineado">
+
+    <input *ngIf="opcionSeleccionada == 'Artista'" [(ngModel)]="termino" type="text" (keyup)="buscar(termino)" class="form-control" placeholder="Buscar Artista ...">
+    <input *ngIf="opcionSeleccionada == 'Cancion'" [(ngModel)]="termino" type="text" (keyup)="buscar(termino)" class="form-control" placeholder="Buscar Canción ...">
+
+    <!-- [(ngModel)]="opcionSeleccionada" -->
+    <select [style.marginLeft.px]="10" [(ngModel)]="opcionSeleccionada" class="btn btn-outline-primary"  (change)="buscar(termino)">
+      <option value="Artista">Artista</option>
+      <option value="Cancion">Canción</option>
+    </select>
+
+  </div>
+
+</div>
+
+<!-- <div class="card-columns"> -->
+
+  <app-loading *ngIf="loading" class="m-5"></app-loading>
+  <app-tarjetas *ngIf="!loading" [items]="artistas" [opcionSeleccionada]="opcionSeleccionada"></app-tarjetas>
+  <!-- <div class="card" *ngFor="let artista of artistas">
+    <img [src]="artista.images | noimage" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{artista.name}}</h5>
+    </div>
+  </div> -->
+
+<!-- </div> -->
